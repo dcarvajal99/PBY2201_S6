@@ -31,13 +31,13 @@ public class VideojuegoService {
     }
 
     public VideojuegoDTO buscarVideojuegoPorTitulo(String titulo) {
-        Videojuego videojuego = videojuegoRepository.findByTitulo(titulo)
+        Videojuego videojuego = videojuegoRepository.findByTituloIgnoreCase(titulo)
                 .orElseThrow(() -> VideojuegoNotFoundException.porTitulo(titulo));
         return videojuegoMapper.toDTO(videojuego);
     }
 
     public List<VideojuegoDTO> listarVideojuegosPorPlataforma(String plataforma) {
-        List<Videojuego> resultados = videojuegoRepository.findByPlataforma(plataforma);
+        List<Videojuego> resultados = videojuegoRepository.findByPlataformaIgnoreCase(plataforma);
         if (resultados.isEmpty()) {
             throw new PlataformaNoValidaException(plataforma);
         }

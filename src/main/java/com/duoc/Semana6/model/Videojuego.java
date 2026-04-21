@@ -1,11 +1,27 @@
 package com.duoc.Semana6.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "videojuego")
 public class Videojuego {
 
+    @Id
     private int id;
+
+    @Column(nullable = false, length = 150)
     private String titulo;
+
+    @Column(nullable = false)
     private int precio;
+
+    @Column(nullable = false, length = 50)
     private String plataforma;
+
+    @Column(nullable = false)
     private boolean disponibilidad;
 
     public Videojuego() {
